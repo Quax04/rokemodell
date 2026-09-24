@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>rokemodell – Modellbau von Roland</title>
+  <meta name="description" content="Voll-GFK-Segelflugmodelle von Roland: Grob 109, Speed Canard SC01 B, TwinAstir. Fragen und Bauanleitungen auf Anfrage.">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <header class="kopf">
+    <a class="wortmarke" href="#top">rokemodell</a>
+    <button class="menue-schalter" type="button" aria-expanded="false" aria-controls="navigation">Menü</button>
+    <nav id="navigation" class="navigation" aria-label="Hauptnavigation">
+      <a href="#roland">Über Roland</a>
+      <a href="#modelle">Modelle</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero: schematische Draufsicht wie auf einem Bauplan -->
+    <section class="plan" aria-labelledby="plan-titel">
+      <figure class="plan-zeichnung">
+        <svg viewBox="0 0 1200 340" role="img" aria-labelledby="plan-svg-titel">
+          <title id="plan-svg-titel">Schematische Draufsicht eines Segelflugmodells mit 7 Metern Spannweite</title>
+          <!-- Maßlinie Spannweite -->
+          <g class="masslinie">
+            <line class="zeichnen" pathLength="1" x1="40" y1="34" x2="40" y2="110"/>
+            <line class="zeichnen" pathLength="1" x1="1160" y1="34" x2="1160" y2="110"/>
+            <line class="zeichnen" pathLength="1" x1="40" y1="46" x2="530" y2="46"/>
+            <line class="zeichnen" pathLength="1" x1="670" y1="46" x2="1160" y2="46"/>
+            <path class="pfeil" d="M40 46 l14 -5 v10 z M1160 46 l-14 -5 v10 z"/>
+            <text x="600" y="51" text-anchor="middle">7000 mm</text>
+          </g>
+          <!-- Mittellinie -->
+          <line class="mittellinie zeichnen" pathLength="1" x1="600" y1="64" x2="600" y2="326"/>
+          <!-- Modell -->
+          <g class="modell">
+            <path class="zeichnen" pathLength="1" d="M40 118 L600 104 L1160 118 L1160 130 L600 148 L40 130 Z"/>
+            <path class="zeichnen" pathLength="1" d="M600 74 C611 74 614 92 612 112 L605 296 L595 296 L588 112 C586 92 589 74 600 74 Z"/>
+            <path class="zeichnen" pathLength="1" d="M514 286 L600 280 L686 286 L686 294 L600 299 L514 294 Z"/>
+            <ellipse class="zeichnen" pathLength="1" cx="600" cy="98" rx="5" ry="13"/>
+            <line class="zeichnen fein" pathLength="1" x1="1060" y1="121" x2="1060" y2="133"/>
+            <line class="zeichnen fein" pathLength="1" x1="140" y1="121" x2="140" y2="133"/>
+          </g>
+        </svg>
+        <figcaption>Draufsicht, schematisch</figcaption>
+      </figure>
+
+      <div class="plan-text">
+        <h1 id="plan-titel">Segelflugmodelle in Voll-GFK. Gebaut von Roland, seit den frühen 80ern.</h1>
+        <p>Hier findet ihr die Modelle, ihre Geschichte und den Weg zu Bauanleitungen.</p>
+      </div>
+    </section>
+
+    <section id="roland" class="abschnitt roland" aria-labelledby="roland-titel">
+      <h2 id="roland-titel">Über Roland</h2>
+      <div class="fliesstext">
+        <p>Roland konstruierte schon in den frühen 80er Jahren als einer der Ersten Modelle komplett aus GFK, zu einer Zeit, in der sonst kaum jemand daran dachte.</p>
+        <p>So entstanden zum Beispiel der Speed Canard SC01 B oder der TwinAstir mit 7 Metern Spannweite.</p>
+        <!-- TODO: weitere Stationen, Wettbewerbe, Werkstatt, Fotos -->
+      </div>
+    </section>
+
+    <section id="modelle" class="abschnitt modelle" aria-labelledby="modelle-titel">
+      <h2 id="modelle-titel">Die Modelle</h2>
+
+      <article class="modell-eintrag">
+        <h3>TwinAstir</h3>
+        <p>Großsegler mit 7 Metern Spannweite in Voll-GFK-Bauweise.</p>
+        <dl class="daten">
+          <div><dt>Spannweite</dt><dd>7000 mm</dd></div>
+          <div><dt>Bauweise</dt><dd>Voll-GFK</dd></div>
+          <div><dt>Bauanleitung</dt><dd><a href="#kontakt">auf Anfrage</a></dd></div>
+        </dl>
+      </article>
+
+      <article class="modell-eintrag">
+        <h3>Speed Canard SC01 B</h3>
+        <p>Entenflugzeug in Voll-GFK-Bauweise. <!-- TODO: Beschreibung ergänzen --></p>
+        <dl class="daten">
+          <div><dt>Spannweite</dt><dd class="offen">folgt</dd></div>
+          <div><dt>Bauweise</dt><dd>Voll-GFK</dd></div>
+          <div><dt>Bauanleitung</dt><dd><a href="#kontakt">auf Anfrage</a></dd></div>
+        </dl>
+      </article>
+
+      <article class="modell-eintrag">
+        <h3>Grob 109</h3>
+        <p>Modell des Motorseglers Grob G 109. <!-- TODO: Beschreibung ergänzen --></p>
+        <dl class="daten">
+          <div><dt>Spannweite</dt><dd class="offen">folgt</dd></div>
+          <div><dt>Bauweise</dt><dd class="offen">folgt</dd></div>
+          <div><dt>Bauanleitung</dt><dd><a href="#kontakt">auf Anfrage</a></dd></div>
+        </dl>
+      </article>
+    </section>
+
+    <section id="kontakt" class="abschnitt kontakt" aria-labelledby="kontakt-titel">
+      <h2 id="kontakt-titel">Kontakt</h2>
+      <div class="fliesstext">
+        <p>Ihr habt Fragen zu den Modellen oder braucht eine Bauanleitung? Schreibt mir gerne.</p>
+        <!-- TODO: echte E-Mail-Adresse eintragen (data-user / data-domain) -->
+        <p><a class="knopf" data-user="" data-domain="rokemodell.de" href="#kontakt">E-Mail schreiben</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="fuss">
+    <p>© <span data-jahr>2026</span> rokemodell</p>
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="impressum.html#datenschutz">Datenschutz</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
