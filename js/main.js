@@ -17,6 +17,28 @@
       });
     }
 
+    document.querySelectorAll(".mit-untermenue").forEach(function (m) {
+      var knopf = m.querySelector(".untermenue-schalter");
+      if (!knopf) { return; }
+      knopf.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var offen = m.classList.toggle("offen");
+        knopf.setAttribute("aria-expanded", offen ? "true" : "false");
+      });
+      document.addEventListener("click", function (e) {
+        if (!m.contains(e.target)) {
+          m.classList.remove("offen");
+          knopf.setAttribute("aria-expanded", "false");
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          m.classList.remove("offen");
+          knopf.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
     var jahr = document.querySelector("[data-jahr]");
     if (jahr) { jahr.textContent = new Date().getFullYear(); }
 

@@ -11,11 +11,34 @@
 <body class="unterseite">
 
   <header class="kopf">
-    <a class="wortmarke" href="index.html">Rokemodelle</a>
+    <a class="wortmarke" href="index.html"><img src="img/logo.png" alt="roke modelle" width="200" height="50"></a>
     <button class="menue-schalter" type="button" aria-expanded="false" aria-controls="navigation">Menü</button>
     <nav id="navigation" class="navigation" aria-label="Hauptnavigation">
       <a href="index.html">Home</a>
-      <a href="#">Modelle – Bauanleitungen</a>
+      <div class="mit-untermenue">
+        <a href="modelle.html">Modelle – Bauanleitungen</a>
+        <button class="untermenue-schalter" type="button" aria-expanded="false" aria-controls="untermenue" aria-label="Modelle anzeigen"></button>
+        <ul id="untermenue" class="untermenue">
+          <li class="gruppe"><span>Segelflugmodelle</span>
+          <ul>
+            <li><a href="modelle/asw-17.html">ASW 17</a></li>
+            <li><a href="modelle/asw-19t.html">ASW 19T</a></li>
+            <li><a href="modelle/ask-18.html">ASK 18</a></li>
+            <li><a href="modelle/sb-10.html">SB 10</a></li>
+            <li><a href="modelle/dg-202.html">DG 202</a></li>
+            <li><a href="modelle/twin-astir.html">Twin-Astir</a></li>
+          </ul></li>
+          <li class="gruppe"><span>Motorsegler</span>
+          <ul>
+            <li><a href="modelle/grob-g109.html">Grob G 109 M</a></li>
+          </ul></li>
+          <li class="gruppe"><span>Motorflugmodelle</span>
+          <ul>
+            <li><a href="modelle/extra-300.html">Mini Extra 300</a></li>
+            <li><a href="modelle/speed-canard.html">Speed Canard</a></li>
+          </ul></li>
+        </ul>
+      </div>
     </nav>
   </header>
 
