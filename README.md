@@ -1,6 +1,6 @@
 # rokemodell
 
-Webseite von rokemodell – Voll-GFK-Segelflugmodelle von Roland.
+Webseite von rokemodell – Segelflugmodelle von Roland Kern.
 
 Reines HTML, CSS und JavaScript, ohne Build-Schritt und ohne externe Dienste.
 
