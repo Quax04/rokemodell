@@ -1,4 +1,3 @@
-// Rokemodelle – kleine Helfer, keine externen Bibliotheken
 (function () {
   "use strict";
 
@@ -8,7 +7,6 @@
 
   document.addEventListener("DOMContentLoaded", function () {
 
-    // Mobiles Menü
     var schalter = document.querySelector(".menue-schalter");
     var nav = document.getElementById("navigation");
     if (schalter && nav) {
@@ -19,15 +17,15 @@
       });
     }
 
-    // Aktuelles Jahr in der Fußzeile
     var jahr = document.querySelector("[data-jahr]");
     if (jahr) { jahr.textContent = new Date().getFullYear(); }
 
-    // E-Mail-Links erst im Browser zusammensetzen (etwas Schutz vor Spam-Sammlern)
-    document.querySelectorAll("a[data-user][data-domain]").forEach(function (a) {
-      var adresse = a.getAttribute("data-user") + "@" + a.getAttribute("data-domain");
-      a.href = "mailto:" + adresse;
-      a.textContent = adresse;
+    document.querySelectorAll("a[data-m]").forEach(function (a) {
+      try {
+        var adresse = atob(a.getAttribute("data-m")).split("").reverse().join("");
+        a.href = "mailto:" + adresse;
+        a.textContent = adresse;
+      } catch (e) {}
     });
   });
 })();
