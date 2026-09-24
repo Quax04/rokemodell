@@ -1,0 +1,242 @@
+/* rokemodell – Bauplan-Stil
+   Farben: Planpapier, Tusche, Bleistift, Hilfslinie, Lichtpaus-Violett
+   Schriften: nur Systemschriften, keine externen Dienste (DSGVO) */
+
+:root {
+  --papier: #f2f3ee;
+  --tusche: #1e2b36;
+  --bleistift: #5e6a73;
+  --hilfslinie: #b9c0c4;
+  --lichtpause: #3d3f8f;
+
+  --schrift-technik: "Bahnschrift", "DIN Alternate", "D-DIN", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --schrift-text: "Charter", "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, serif;
+
+  --rand: clamp(1.25rem, 5vw, 4rem);
+  --spalte: 38rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--tusche);
+  font-family: var(--schrift-text);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+a { color: var(--lichtpause); text-underline-offset: 0.2em; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--lichtpause);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, .wortmarke, .navigation, .daten, figcaption, .knopf, .fuss, .menue-schalter {
+  font-family: var(--schrift-technik);
+}
+
+/* Kopfzeile */
+.kopf {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem var(--rand);
+  background: var(--papier);
+  border-bottom: 1px solid var(--hilfslinie);
+}
+.wortmarke {
+  color: var(--tusche);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.navigation { display: flex; gap: 1.75rem; }
+.navigation a { color: var(--tusche); text-decoration: none; font-size: 1rem; }
+.navigation a:hover { color: var(--lichtpause); text-decoration: underline; }
+.menue-schalter {
+  display: none;
+  font: inherit;
+  font-family: var(--schrift-technik);
+  font-size: 1rem;
+  background: none;
+  color: var(--tusche);
+  border: 1px solid var(--tusche);
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
+
+/* Bauplan-Hero */
+.plan {
+  padding: clamp(2rem, 6vw, 5rem) var(--rand) clamp(3rem, 7vw, 6rem);
+  background-image:
+    linear-gradient(rgba(94, 106, 115, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 106, 115, 0.14) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: -1px -1px;
+  background-color: var(--papier);
+  border-bottom: 1px solid var(--hilfslinie);
+}
+.plan-zeichnung { margin: 0 auto; max-width: 72rem; }
+.plan-zeichnung svg { display: block; width: 100%; height: auto; overflow: visible; }
+.plan-zeichnung figcaption {
+  margin-top: 0.5rem;
+  text-align: right;
+  font-size: 0.875rem;
+  color: var(--bleistift);
+}
+
+.modell path, .modell ellipse, .modell line {
+  fill: none;
+  stroke: var(--tusche);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.modell .fein { stroke-width: 1; }
+.mittellinie { stroke: var(--bleistift); stroke-width: 1; stroke-dasharray: 18 5 3 5; }
+.masslinie line { stroke: var(--lichtpause); stroke-width: 1.25; }
+.masslinie .pfeil { fill: var(--lichtpause); }
+.masslinie text {
+  fill: var(--lichtpause);
+  font-family: var(--schrift-technik);
+  font-size: 18px;
+}
+
+.plan-text { max-width: 72rem; margin: clamp(2rem, 5vw, 3.5rem) auto 0; }
+.plan-text h1 {
+  max-width: 22ch;
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 5.2vw, 4rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.plan-text p { max-width: var(--spalte); margin: 0; color: var(--bleistift); font-size: 1.2rem; }
+
+/* Einmalige Zeichen-Animation beim Laden */
+.js .zeichnen { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js .mittellinie.zeichnen { stroke-dasharray: 18 5 3 5; stroke-dashoffset: 0; opacity: 0; }
+.js .masslinie text, .js .masslinie .pfeil { opacity: 0; }
+.js .plan.gezeichnet .zeichnen { animation: zeichnen 1.6s ease-in-out forwards; }
+.js .plan.gezeichnet .masslinie .zeichnen { animation-delay: 1.4s; animation-duration: 0.8s; }
+.js .plan.gezeichnet .mittellinie.zeichnen { animation: einblenden 0.6s ease 1.2s forwards; }
+.js .plan.gezeichnet .masslinie text,
+.js .plan.gezeichnet .masslinie .pfeil { animation: einblenden 0.5s ease 2.1s forwards; }
+
+@keyframes zeichnen { to { stroke-dashoffset: 0; } }
+@keyframes einblenden { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .zeichnen { stroke-dasharray: none; stroke-dashoffset: 0; }
+  .js .mittellinie.zeichnen { stroke-dasharray: 18 5 3 5; opacity: 1; }
+  .js .masslinie text, .js .masslinie .pfeil { opacity: 1; }
+  .js .plan.gezeichnet * { animation: none !important; }
+}
+
+/* Abschnitte */
+.abschnitt {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) minmax(0, 2.4fr);
+  gap: 1rem clamp(2rem, 5vw, 5rem);
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) var(--rand);
+  border-bottom: 1px solid var(--hilfslinie);
+}
+.abschnitt:last-of-type { border-bottom: 0; }
+.abschnitt h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.fliesstext { max-width: var(--spalte); }
+.fliesstext p:first-child { margin-top: 0; }
+
+/* Modelle als Stückliste, nicht als Kacheln */
+.modelle { row-gap: 0; }
+.modelle h2 { grid-row: span 3; }
+.modell-eintrag {
+  grid-column: 2;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--tusche);
+}
+.modell-eintrag:first-of-type { padding-top: 0; border-top: 0; }
+.modell-eintrag h3 { margin: 0 0 0.35rem; font-size: 1.5rem; font-weight: 600; }
+.modell-eintrag > p { margin: 0 0 1rem; max-width: var(--spalte); }
+.daten {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem 1.5rem;
+  margin: 0;
+  font-size: 1rem;
+}
+.daten dt { color: var(--bleistift); font-size: 0.875rem; }
+.daten dd { margin: 0; }
+.daten .offen { color: var(--bleistift); font-style: italic; }
+
+/* Kontakt */
+.knopf {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  background: var(--lichtpause);
+  color: var(--papier);
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+.knopf:hover { background: var(--tusche); }
+.knopf[aria-disabled="true"] { background: var(--bleistift); cursor: default; }
+
+/* Fußzeile */
+.fuss {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem var(--rand);
+  border-top: 1px solid var(--tusche);
+  font-size: 0.95rem;
+  color: var(--bleistift);
+}
+.fuss p { margin: 0; }
+.fuss nav { display: flex; gap: 1.5rem; }
+.fuss a { color: var(--bleistift); }
+
+/* Unterseiten (Impressum) */
+.unterseite { max-width: var(--spalte); margin: 0 auto; padding: clamp(2.5rem, 7vw, 5rem) var(--rand); }
+.unterseite h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 600; margin-top: 0; }
+.unterseite h2 { font-size: 1.35rem; font-weight: 600; margin-top: 2.5rem; }
+
+/* Mobil */
+@media (max-width: 720px) {
+  .menue-schalter { display: block; }
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--papier);
+    border-bottom: 1px solid var(--hilfslinie);
+  }
+  .navigation.offen { display: flex; }
+  .navigation a { padding: 0.9rem var(--rand); border-top: 1px solid var(--hilfslinie); }
+  .no-js .navigation { display: flex; position: static; }
+
+  .abschnitt { grid-template-columns: 1fr; }
+  .modelle h2 { grid-row: auto; margin-bottom: 1.5rem; }
+  .modell-eintrag { grid-column: 1; }
+  .daten { grid-template-columns: 1fr 1fr; }
+  .masslinie text { font-size: 32px; }
+}
