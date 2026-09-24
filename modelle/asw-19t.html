@@ -10,36 +10,31 @@
 </head>
 <body class="unterseite">
 
-  <header class="kopf">
-    <a class="wortmarke" href="../index.html"><img src="../img/logo.png" alt="roke modelle" width="200" height="50"></a>
-    <button class="menue-schalter" type="button" aria-expanded="false" aria-controls="navigation">Menü</button>
-    <nav id="navigation" class="navigation" aria-label="Hauptnavigation">
-      <a href="../index.html">Home</a>
-      <div class="mit-untermenue">
-        <a href="../modelle.html" aria-current="page">Modelle – Bauanleitungen</a>
-        <button class="untermenue-schalter" type="button" aria-expanded="false" aria-controls="untermenue" aria-label="Modelle anzeigen"></button>
-        <ul id="untermenue" class="untermenue">
-          <li class="gruppe"><span>Segelflugmodelle</span>
-          <ul>
-            <li><a href="../modelle/asw-17.html">ASW 17</a></li>
-            <li><a href="../modelle/asw-19t.html">ASW 19T</a></li>
-            <li><a href="../modelle/ask-18.html">ASK 18</a></li>
-            <li><a href="../modelle/sb-10.html">SB 10</a></li>
-            <li><a href="../modelle/dg-202.html">DG 202</a></li>
-            <li><a href="../modelle/twin-astir.html">Twin-Astir</a></li>
-          </ul></li>
-          <li class="gruppe"><span>Motorsegler</span>
-          <ul>
-            <li><a href="../modelle/grob-g109.html">Grob G 109 M</a></li>
-          </ul></li>
-          <li class="gruppe"><span>Motorflugmodelle</span>
-          <ul>
-            <li><a href="../modelle/extra-300.html">Mini Extra 300</a></li>
-            <li><a href="../modelle/speed-canard.html">Speed Canard</a></li>
-          </ul></li>
-        </ul>
-      </div>
+  <header class="site-header">
+    <div class="header-row">
+      <a class="brand" href="../index.html"><img src="../img/logo.png" alt="roke modelle" width="200" height="50"></a>
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="hauptmenue">Menü</button>
+      <ul id="hauptmenue">
+        <li><a href="../index.html"><span class="nav-label">Home</span></a></li>
+        <li class="has-children is-active">
+          <a href="../modelle.html" aria-haspopup="true" aria-expanded="false" data-menu-parent><span class="nav-label">Modelle – Bauanleitungen</span></a>
+          <ul class="sub-menu">
+            <li><a href="../modelle.html"><span class="nav-label">Übersicht</span></a></li>
+            <li><a href="../modelle/asw-17.html"><span class="nav-label">ASW 17</span></a></li>
+            <li class="is-active"><a href="../modelle/asw-19t.html"><span class="nav-label">ASW 19T</span></a></li>
+            <li><a href="../modelle/ask-18.html"><span class="nav-label">ASK 18</span></a></li>
+            <li><a href="../modelle/sb-10.html"><span class="nav-label">SB 10</span></a></li>
+            <li><a href="../modelle/dg-202.html"><span class="nav-label">DG 202</span></a></li>
+            <li><a href="../modelle/twin-astir.html"><span class="nav-label">Twin-Astir</span></a></li>
+            <li><a href="../modelle/grob-g109.html"><span class="nav-label">Grob G 109 M</span></a></li>
+            <li><a href="../modelle/extra-300.html"><span class="nav-label">Mini Extra 300</span></a></li>
+            <li><a href="../modelle/speed-canard.html"><span class="nav-label">Speed Canard</span></a></li>
+          </ul>
+        </li>
+      </ul>
     </nav>
+    </div>
   </header>
 
   <main class="inhalt">
