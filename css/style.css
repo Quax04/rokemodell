@@ -7,10 +7,12 @@
   --grau: #5f676d;
   --linie: #d9dde0;
   --akzent: #1f5f8b;
+  --link-hell: #4a8df0;
   --nacht: #0e1a24;
 
-  --schrift-titel: "Bahnschrift", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --schrift-text: "Charter", "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, serif;
+  /* Vorlage nutzt Mulish; ohne externe Dienste greifen ähnliche Systemschriften */
+  --schrift-titel: "Mulish", "Nunito Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --schrift-text: var(--schrift-titel);
 
   --rand: clamp(1.25rem, 5vw, 4rem);
   --spalte: 40rem;
@@ -41,13 +43,23 @@ h1, .wortmarke, .navigation, .menue-schalter, .fuss, .lebensdaten { font-family:
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.25rem var(--rand);
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 1.9rem var(--rand);
   color: #fff;
 }
-.wortmarke { color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: 600; }
-.navigation { display: flex; gap: 2rem; }
-.navigation a { color: #fff; text-decoration: none; font-size: 1rem; }
-.navigation a:hover, .navigation a[aria-current="page"] { text-decoration: underline; text-underline-offset: 0.35em; }
+.wortmarke { display: block; line-height: 0; }
+.wortmarke img { display: block; width: clamp(150px, 12vw, 200px); height: auto; }
+.navigation { display: flex; gap: 3rem; }
+.navigation a {
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+}
+.navigation a:hover { color: #fff; }
+.navigation a[aria-current="page"] { color: #fff; border-bottom-color: #fff; }
 .menue-schalter {
   display: none;
   font: inherit; font-family: var(--schrift-titel); font-size: 1rem;
@@ -56,41 +68,31 @@ h1, .wortmarke, .navigation, .menue-schalter, .fuss, .lebensdaten { font-family:
   padding: 0.3rem 0.8rem; cursor: pointer;
 }
 
-/* Titelbild */
+/* Titelbild mit Brief */
 .titelbild {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  min-height: min(88vh, 52rem);
-  padding: 8rem var(--rand) clamp(3rem, 8vh, 6rem);
+  padding: clamp(10rem, 38vh, 22rem) var(--rand) clamp(4rem, 10vh, 7rem);
   background-color: var(--nacht);
   background-image:
-    linear-gradient(to bottom, rgba(14,26,36,0.55) 0%, rgba(14,26,36,0.1) 35%, rgba(14,26,36,0.65) 100%),
+    linear-gradient(rgba(20, 22, 28, 0.55), rgba(20, 22, 28, 0.55)),
     url("../img/hintergrund.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center top;
+  background-attachment: fixed;
   color: #fff;
 }
-.titelbild-text { width: 100%; max-width: 72rem; margin: 0 auto; }
+.spalte { max-width: 52rem; margin: 0 auto; }
 .titelbild h1 {
   margin: 0;
-  font-size: clamp(2.75rem, 8vw, 6rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.01em;
+  font-size: clamp(2.25rem, 3.2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
 }
-.lebensdaten { margin: 0.75rem 0 0; font-size: clamp(1.25rem, 2.5vw, 1.75rem); opacity: 0.9; }
-
-/* Brief */
-.brief {
-  max-width: var(--spalte);
-  margin: 0 auto;
-  padding: clamp(3rem, 8vw, 6rem) var(--rand);
-}
-.brief p { margin: 0 0 1.25em; }
-.brief .anrede { font-size: 1.3rem; }
-.gruss { margin-top: 2.5rem !important; }
-.unterschrift { display: inline-block; margin-top: 0.4rem; font-size: 1.6rem; font-style: italic; }
+.lebensdaten { margin: 0 0 2rem; font-size: 1rem; opacity: 0.9; }
+.titelbild p { margin: 0 0 1.5em; font-size: 1.2rem; line-height: 1.55; }
+.titelbild a { color: var(--link-hell); text-decoration: none; }
+.titelbild a:hover { text-decoration: underline; }
+.titelbild strong { font-weight: 700; }
+.titelbild .gruss { margin: 0; }
 
 /* Fußzeile */
 .fuss {
@@ -123,5 +125,6 @@ h1, .wortmarke, .navigation, .menue-schalter, .fuss, .lebensdaten { font-family:
   .navigation.offen { display: flex; }
   .navigation a { padding: 0.9rem var(--rand); border-top: 1px solid rgba(255,255,255,0.15); color: #fff !important; }
   .no-js .navigation { display: flex; position: static; background: none; }
-  .titelbild { min-height: 70vh; }
+  .titelbild { background-attachment: scroll; padding-top: 9rem; }
+  .titelbild p { font-size: 1.075rem; }
 }
