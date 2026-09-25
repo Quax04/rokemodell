@@ -34,8 +34,11 @@
         });
       }
 
+      var mitMaus = window.matchMedia("(hover: hover) and (min-width: 951px)");
+
       nav.querySelectorAll("a[data-menu-parent]").forEach(function (link) {
         link.addEventListener("click", function (e) {
+          if (mitMaus.matches) { return; }
           e.preventDefault();
           var li = link.closest("li.has-children");
           var warOffen = li.classList.contains("is-open");
